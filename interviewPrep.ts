@@ -108,12 +108,12 @@ const possibleItems = [
 ]
 
 
-
 const lowIncomePeoples = new people(10, 411);
 const middleIncomePeoples = new people(10, 10000);
 const highIncomePeoples = new people(10, 1000000);
 
-lowIncomePeoples.greedyPurchaseItems(possibleItems);
+lowIncomePeoples.arrayOfPeople[0].greedyPurchaseItems(possibleItems);
+console.log(lowIncomePeoples.arrayOfPeople[0].ownedItems);
 console.log(middleIncomePeoples.calculateIncomeOfAllPeople());
 console.log(highIncomePeoples.calculateIncomeOfAllPeople());
 
