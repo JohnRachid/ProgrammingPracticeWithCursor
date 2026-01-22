@@ -41,6 +41,7 @@ class Person {
             }
         }
         while (highestvalueToPriceRatioItem && this.canAffordItem(highestvalueToPriceRatioItem)) { //purchase all these items!!!
+
             this.purchaseItem(highestvalueToPriceRatioItem);
         }
         //do a pass to see if we need to purchase more items that arent the most optimal
@@ -109,11 +110,13 @@ const possibleItems = [
 
 
 const lowIncomePeoples = new people(10, 411);
-const middleIncomePeoples = new people(10, 10000);
-const highIncomePeoples = new people(10, 1000000);
+const middleIncomePeoples = new people(10, 1000);
+const highIncomePeoples = new people(10, 10000);
+
+console.log("Before greedy purchase: " + lowIncomePeoples.arrayOfPeople[0].income);
 
 lowIncomePeoples.arrayOfPeople[0].greedyPurchaseItems(possibleItems);
-console.log(lowIncomePeoples.arrayOfPeople[0].ownedItems);
+console.log("After greedy purchase: " + lowIncomePeoples.arrayOfPeople[0].income);
 console.log(middleIncomePeoples.calculateIncomeOfAllPeople());
 console.log(highIncomePeoples.calculateIncomeOfAllPeople());
 
@@ -125,4 +128,4 @@ console.log(highIncomePeoples.calculateIncomeOfAllPeople());
 //this is a knapsack problem with added constaints. optimal appraoch is probably dynamic programming. Lets solve via greedy approach and dynamic. 
 
 //run with node - node interviewPrep.ts
-//run with ts-node npx ts-node interviewPrep.ts
+//run with npx ts-node interviewPrep.ts
