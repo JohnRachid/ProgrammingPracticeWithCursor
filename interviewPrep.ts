@@ -80,6 +80,21 @@ class people extends Person {
         }
         return totalIncome;
     }
+
+    calculateValueOfOwnedMerchandiseOfAllPeople() {
+        let totalValue = 0;
+        for (let i = 0; i < this.arrayOfPeople.length; i++) {
+            const person = this.arrayOfPeople[i] as Person;
+            totalValue += person.ownedItems.reduce((acc, item) => acc + item.value, 0);
+        }
+        return totalValue;
+    }
+
+    greedyPurchaseItemsForAllPeople(items: merchandise[]):void {
+        for (const person of this.arrayOfPeople) {
+            person.greedyPurchaseItems(items);
+        }
+    }
 }
 
 class merchandise {
@@ -117,8 +132,21 @@ console.log("Before greedy purchase: " + lowIncomePeoples.arrayOfPeople[0].incom
 
 lowIncomePeoples.arrayOfPeople[0].greedyPurchaseItems(possibleItems);
 console.log("After greedy purchase: " + lowIncomePeoples.arrayOfPeople[0].income);
-console.log(middleIncomePeoples.calculateIncomeOfAllPeople());
-console.log(highIncomePeoples.calculateIncomeOfAllPeople());
+
+console.log("income for lowIncomePeoples people before greedy purchase: " + lowIncomePeoples.calculateIncomeOfAllPeople());
+lowIncomePeoples.greedyPurchaseItemsForAllPeople(possibleItems);
+console.log("income for all people after greedy purchase: " + lowIncomePeoples.calculateIncomeOfAllPeople());
+console.log("value of owned merchandise for lowIncomePeoples: " + lowIncomePeoples.calculateValueOfOwnedMerchandiseOfAllPeople());
+
+
+console.log("income for middleIncomePeoples people before greedy purchase: " + middleIncomePeoples.calculateIncomeOfAllPeople());
+middleIncomePeoples.greedyPurchaseItemsForAllPeople(possibleItems);
+console.log("income for middleIncomePeoples people after greedy purchase: " + middleIncomePeoples.calculateIncomeOfAllPeople());
+console.log("value of owned merchandise for middleIncomePeoples: " + middleIncomePeoples.calculateValueOfOwnedMerchandiseOfAllPeople());
+
+
+console.log("income for all people: " + middleIncomePeoples.calculateIncomeOfAllPeople());
+console.log("income for all people: " + highIncomePeoples.calculateIncomeOfAllPeople());
 
 
 
